@@ -142,9 +142,9 @@ def normal():
 
 def hard_questions():
     num1 = random.randint(1, 100)
-    num2 = random.randint(1, 100)
-    operator = random.choice(['+', '-'])
-    question = f"What is {num1} {operator} {num2}? "
+    num2 = random.randint(1, 100)  # gets two random numbers from 1 to 100
+    operator = random.choice(['+', '-'])  # gets either plus or minus
+    question = f"What is {num1} {operator} {num2}? "  # creates the question
     if operator == '+':
         answer = num1 + num2
     elif operator == '-':
@@ -157,23 +157,26 @@ def hard_questions():
 
 
 def hard():
-    score = 0
+    score = 0  # puts the players score to zero
 
     for _ in range(number_of_questions):
         question, correct_answer = hard_questions()
         user_answer = input(question)
         if float(user_answer) == correct_answer:
             score += 1
-            print("Correct!")
+            print("Correct!")  # if the player got the question correct then
+            # it will add one to his score
         else:
             print("that one was not correct")
-            print(f"the correct answer was {correct_answer}")
+            print(f"the correct answer was {correct_answer}")  # if the player got the question
+            # wrong then it will tell him the correct answer
     print(f"You got {score} out of {number_of_questions}.")
 
 
-if want_difficulty == 'easy':
+if want_difficulty == 'easy':  # if the player said easy then it will
+    # run the dif called easy
     easy()
-elif want_difficulty == 'normal':
+elif want_difficulty == 'normal':  # if the player said normal then it will run the dif called normal
     normal()
-elif want_difficulty == 'hard':
+elif want_difficulty == 'hard':  # if the player said hard then it will run the dif called hard
     hard()
