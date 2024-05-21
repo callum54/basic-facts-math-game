@@ -1,5 +1,6 @@
 import random
 
+
 # asking if the player wants to see the instructions.
 
 
@@ -13,20 +14,21 @@ def yes_no(question):
         else:
             print("Please answer with yes or no")
 
+
 # instructions.
 
 
 def instructions():
     print('''
-    
+
     🔥🔥🔥Welcome to Basic facts maths game!🔥🔥🔥
-        
+
     to play you will be asked how many questions you want to be in the quiz.
     Then you will answer the questions.
-    
-    once you have answered all your questions you can check your 
+
+    once you have answered all your questions you can check your
     results and see what you got wrong
-        
+
         good luck!
           ''')
 
@@ -36,75 +38,21 @@ print()
 print("➖basic facts maths game➕")
 print()
 
-want_instructions = yes_no("Do you want to read the instructions? ")
-
 # if the player said yes then it prints what's in def instructions.
+want_instructions = yes_no("Do you want to read the instructions? ")
 if want_instructions == "yes":
     instructions()
+
+
+
 
 # asks player how many questions they will get.
 number_of_questions = int(input(f"how many questions would you like? "))
 print(f"you will get {number_of_questions} questions on your quiz ")
 print()
 
-# difficulty levels
 
-
-def easy():
-    print("starting easy mode")
-    print()
-    # gets two random numbers
-    number_1 = random.randint(1, 50)
-    number_2 = random.randint(1, 50)
-
-    answer_1 = number_1 + number_2
-
-    # makes math equation and checks the players answer
-    user_answer = int(input(f" {number_1} + {number_2} "))
-    if user_answer == answer_1:
-        print("correct!")
-    else:
-        print("that one was not correct")
-        print(f"the correct answer was {answer_1}")
-
-
-def normal():
-    print("starting normal mode")
-    print()
-    # gets two random numbers
-    number_1 = random.randint(1, 100)
-    number_2 = random.randint(1, 100)
-
-    answer_1 = number_1 + number_2
-
-    # makes math equation and checks the players answer
-    user_answer = int(input(f" {number_1} + {number_2} "))
-    if user_answer == answer_1:
-        print("correct!")
-    else:
-        print("that one was not correct")
-        print(f"the correct answer was {answer_1}")
-
-
-
-def hard():
-    print("starting hard mode")
-    print()
-    # gets two random numbers
-    number_1 = random.randint(1, 160)
-    number_2 = random.randint(1, 160)
-
-    answer_1 = number_1 + number_2
-
-    # makes math equation and checks the players answer
-    user_answer = int(input(f" {number_1} + {number_2} "))
-    if user_answer == answer_1:
-        print("correct!")
-    else:
-        print("that one was not correct")
-        print(f"the correct answer was {answer_1}")
-
-
+# asks what difficulty the player wants
 def difficulty(question):
     while True:
         answer = input(question).lower()
@@ -124,7 +72,108 @@ print()
 print("press enter to start your quiz ")
 input()
 
-if want_difficulty == "easy":
+
+# makes the easy questions
+def easy_questions():
+    num1 = random.randint(1, 10)
+    num2 = random.randint(1, 10)
+    operator = random.choice(['+', '-'])
+    question = f"What is {num1} {operator} {num2}? "
+    if operator == '+':
+        answer = num1 + num2
+    elif operator == '-':
+        answer = num1 - num2
+    else:
+        answer = num1 / num2
+    return question, answer
+
+# finds out if the players answer is correct then adds it to a score
+
+
+def easy():
+    score = 0
+
+    for _ in range(number_of_questions):
+        question, correct_answer = easy_questions()
+        user_answer = input(question)
+        if float(user_answer) == correct_answer:
+            score += 1
+            print("Correct!")
+        else:
+            print("that one was not correct")
+            print(f"the correct answer was {correct_answer}")
+    print(f"You got {score} out of {number_of_questions}.")
+
+# makes the normal questions
+
+
+def normal_questions():
+    num1 = random.randint(1, 30)
+    num2 = random.randint(1, 30)
+    operator = random.choice(['+', '-'])
+    question = f"What is {num1} {operator} {num2}? "
+    if operator == '+':
+        answer = num1 + num2
+    elif operator == '-':
+        answer = num1 - num2
+    else:
+        answer = num1 / num2
+    return question, answer
+
+# finds out if the players answer is correct then adds it to a score
+
+
+def normal():
+    score = 0
+
+    for _ in range(number_of_questions):
+        question, correct_answer = normal_questions()
+        user_answer = input(question)
+        if float(user_answer) == correct_answer:
+            score += 1
+            print("Correct!")
+        else:
+            print("that one was not correct")
+            print(f"the correct answer was {correct_answer}")
+    print(f"You got {score} out of {number_of_questions}.")
+
+# makes the hard questions
+
+
+def hard_questions():
+    num1 = random.randint(1, 100)
+    num2 = random.randint(1, 100)
+    operator = random.choice(['+', '-'])
+    question = f"What is {num1} {operator} {num2}? "
+    if operator == '+':
+        answer = num1 + num2
+    elif operator == '-':
+        answer = num1 - num2
+    else:
+        answer = num1 / num2
+    return question, answer
+
+# finds out if the players answer is correct then adds it to a score
+
+
+def hard():
+    score = 0
+
+    for _ in range(number_of_questions):
+        question, correct_answer = hard_questions()
+        user_answer = input(question)
+        if float(user_answer) == correct_answer:
+            score += 1
+            print("Correct!")
+        else:
+            print("that one was not correct")
+            print(f"the correct answer was {correct_answer}")
+    print(f"You got {score} out of {number_of_questions}.")
+
+
+if want_difficulty == 'easy':
     easy()
-elif want_difficulty == "normal":
+elif want_difficulty == 'normal':
     normal()
+elif want_difficulty == 'hard':
+    hard()
