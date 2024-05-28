@@ -144,7 +144,7 @@ def easy():
         else:
             print("that one was not correct")
             print(f"the correct answer was {correct_answer}")
-    print(f"{name} got {score} out of {number_of_questions}.")
+    print(f"you got {score} out of {number_of_questions}.")
 
 # makes the normal questions
 
@@ -179,7 +179,7 @@ def normal():
         else:
             print("that one was not correct")
             print(f"the correct answer was {correct_answer}")
-    print(f"{name} got {score} out of {number_of_questions}.")
+      print(f"you got {score} out of {number_of_questions}.")
 
 # makes the hard questions
 
